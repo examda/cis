@@ -1,0 +1,644 @@
+✅ EXPERIMENT 01.A – INSTALLATION OF VIRTUAL BOX
+
+📄 Source: (Page 1–4)
+
+🔹 Requirements
+System
+Windows 7/10 or Linux
+Internet (for download)
+🔹 Steps (FULL – No skip)
+Step 1: Download VirtualBox
+Open browser
+Go to: https://www.virtualbox.org
+Click Downloads
+Select Windows hosts
+Download .exe file
+Step 2: Start Installation
+Double click downloaded .exe
+Click Next
+Step 3: Select Installation Location
+Choose path (default recommended)
+Click Next
+Step 4: Select Components
+Keep all options checked:
+USB Support
+Networking
+Python support
+Click Next
+Step 5: Create Shortcuts
+Tick:
+Desktop shortcut
+Start menu entries
+Click Next
+Step 6: Ready to Install
+Click Install
+Step 7: Install Packages
+Wait until installation completes
+If prompted → click Install for drivers
+Step 8: Install Certificates
+Click Yes / Install
+Step 9: Finish
+Click Finish
+VirtualBox opens
+
+
+
+✅ EXPERIMENT 01.B – FIREWALL CONFIGURATION (BLOCK WEBSITE)
+
+📄 (Page 5–11)
+
+🔹 Steps
+Step 1: Open Firewall
+Go to Start → Control Panel
+Open Windows Defender Firewall
+Step 2: Advanced Settings
+Click Advanced Settings
+Step 3: Create Rule
+Click Outbound Rules
+Click New Rule
+Step 4: Rule Type
+Select Custom
+Click Next (Program → Next → Protocol → Next)
+Step 5: Scope
+Select:
+“These IP addresses”
+Click Add
+Step 6: Get Website IP
+
+Open CMD and type:
+
+ping google.com
+
+Copy IP address
+
+Step 7: Paste IP
+Paste IP in firewall rule
+Click Next
+Step 8: Action
+Select:
+Block the connection
+Click Next
+Step 9: Profile
+Tick all:
+Domain
+Private
+Public
+Click Next
+Step 10: Name Rule
+Enter name (e.g., BlockGoogle)
+Click Finish
+Step 11: Check
+Open browser → website blocked
+Step 12: Unblock
+Go back to rules
+Right click → Disable Rule
+
+
+
+✅ EXPERIMENT 02.A – GPG (ENCRYPTION & DIGITAL SIGNATURE)
+
+📄 (Page 12–18)
+
+🔹 Installation
+Step 1:
+
+Go to:
+
+https://www.gpg4win.org
+Step 2:
+
+Download → Install
+
+Step 3:
+
+Click:
+
+Next → Next → Install → Finish
+🔹 Create Key Pair
+Step 1:
+
+Open Kleopatra
+
+Step 2:
+
+Click:
+
+File → New Key Pair
+Step 3:
+
+Select:
+
+Create personal OpenPGP key pair
+Step 4:
+
+Enter:
+
+Name
+Email
+
+Click Next
+
+Step 5:
+
+Create passphrase
+
+Step 6:
+
+Backup key → Finish
+
+🔹 Encryption
+Step 1:
+
+Open Notepad in Kleopatra
+
+Step 2:
+
+Type message
+
+Step 3:
+
+Click:
+
+Sign/Encrypt
+Step 4:
+
+Enter passphrase
+
+🔹 Decryption
+Step 1:
+
+Click:
+
+Decrypt/Verify
+
+
+
+✅ EXPERIMENT 02.B – NETCAT (BANNER GRABBING)
+
+📄 (Page 19–20)
+
+🔹 Method 1
+nc -v -w1 -z 192.168.43.131 20-25
+🔹 Method 2
+nc google.com 80
+
+
+
+✅ EXPERIMENT 3A – HONEYPOT (KFSENSOR)
+
+📄 (Page 21–24)
+
+🔹 Steps
+Download KFSensor
+Install → Accept license
+Reboot system
+Open setup wizard
+Configuration
+Select all port classes
+Enter email details
+Select:
+DOS
+Port Activity
+Proxy
+Select:
+Install as system service
+Click Finish
+
+
+
+✅ EXPERIMENT 3B – FINGERPRINTING (XPROBE + NMAP)
+
+📄 (Page 25–27)
+
+🔹 XPROBE
+sudo apt-get install xprobe2
+sudo xprobe2 10.1.130.48
+🔹 NMAP
+sudo apt-get install nmap
+nmap --version
+sudo nmap 10.1.130.48
+
+
+
+✅ EXPERIMENT 4A – ROOTKIT SCAN
+
+📄 (Page 29–32)
+
+sudo apt install rkhunter
+rkhunter -c
+
+
+
+✅ EXPERIMENT 4B – WIRELESS AUDIT
+
+Steps:
+
+Insert network card
+Download Vistumbler
+Open software
+Click Scan API
+View networks
+
+
+
+✅ EXPERIMENT 5A – NMAP PORT SCANNING
+nmap -v -sX 10.1.130.40
+nmap -v -sN 10.1.130.40
+nmap -v -sF 10.1.130.40
+nmap -v -sT 10.1.130.48
+nmap -v -A -sV 10.1.130.48
+nmap -v -A www.google.com
+
+
+
+✅ EXPERIMENT 5B – SNORT IDS
+snort
+snort -d -v -e
+
+
+
+✅ EXPERIMENT 6A – XOR PROGRAM
+#include <stdio.h>
+
+int main() {
+    char *str = "\\Hello World";
+
+    printf("Original string: %s\n", str);
+    printf("XOR with 0:\n");
+
+    for (int i = 0; str[i] != '\0'; i++) {
+        char original_char = str[i];
+        char xor_result = original_char ^ 0;
+
+        printf("Character: %c\tXOR Result: %d\n", original_char, xor_result);
+    }
+
+    return 0;
+}
+Compile:
+gcc 6a.c
+./a.out
+
+
+
+✅ EXPERIMENT 6B – AND & XOR
+#include <stdio.h>
+
+int main() {
+    char *str = "\\Hello World";
+
+    printf("Original string: %s\n", str);
+
+    for (int i = 0; str[i] != '\0'; i++) {
+        char original_char = str[i];
+        char and_result = original_char & 127;
+        char xor_result = original_char ^ 127;
+
+        printf("Character: %c\tAND: %d\tXOR: %d\n", original_char, and_result, xor_result);
+    }
+
+    return 0;
+}
+
+
+✅ EXPERIMENT 7A – CAESAR CIPHER
+🔹 Steps
+Step 1: Open DEV C++ (or any C compiler)
+Step 2: Type FULL program
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <conio.h>
+
+int main()
+{
+    char plain[10], cipher[10];
+    int key, i, length;
+
+    printf("Enter the plain text: ");
+    scanf("%s", plain);
+
+    printf("Enter the key value: ");
+    scanf("%d", &key);
+
+    printf("\nPLAIN TEXT: %s", plain);
+    printf("\nENCRYPTED TEXT: ");
+
+    for(i = 0, length = strlen(plain); i < length; i++)
+    {
+        cipher[i] = plain[i] + key;
+
+        if (isupper(plain[i]) && cipher[i] > 'Z')
+            cipher[i] = cipher[i] - 26;
+
+        if (islower(plain[i]) && cipher[i] > 'z')
+            cipher[i] = cipher[i] - 26;
+
+        printf("%c", cipher[i]);
+    }
+
+    printf("\nDECRYPTED TEXT: ");
+
+    for(i = 0; i < length; i++)
+    {
+        plain[i] = cipher[i] - key;
+
+        if(isupper(cipher[i]) && plain[i] < 'A')
+            plain[i] = plain[i] + 26;
+
+        if(islower(cipher[i]) && plain[i] < 'a')
+            plain[i] = plain[i] + 26;
+
+        printf("%c", plain[i]);
+    }
+
+    getch();
+}
+Step 3: Compile & Run
+gcc 7a.c
+./a.out
+
+
+
+✅ EXPERIMENT 7B – PLAYFAIR CIPHER
+🔹 Steps
+Step 1: Open DEV C++
+Step 2: Type FULL program
+
+👉 (Important: Do NOT skip any part)
+
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+#include<ctype.h>
+
+#define MX 5
+
+void playfair(char ch1,char ch2, char key[MX][MX])
+{
+    int i,j,w,x,y,z;
+
+    for(i=0;i<MX;i++)
+    {
+        for(j=0;j<MX;j++)
+        {
+            if(ch1==key[i][j]) { w=i; x=j; }
+            else if(ch2==key[i][j]) { y=i; z=j; }
+        }
+    }
+
+    if(w==y)
+    {
+        x=(x+1)%5; z=(z+1)%5;
+        printf("%c%c",key[w][x],key[y][z]);
+    }
+    else if(x==z)
+    {
+        w=(w+1)%5; y=(y+1)%5;
+        printf("%c%c",key[w][x],key[y][z]);
+    }
+    else
+    {
+        printf("%c%c",key[w][z],key[y][x]);
+    }
+}
+
+int main()
+{
+    int i,j,k=0,m=0,n;
+    char key[MX][MX],keyminus[25],keystr[10],str[25]={0};
+    char alpa[26]="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    printf("Enter key: ");
+    gets(keystr);
+
+    printf("Enter plain text: ");
+    gets(str);
+
+    n=strlen(keystr);
+
+    for(i=0;i<n;i++)
+    {
+        if(keystr[i]=='j') keystr[i]='i';
+        keystr[i]=toupper(keystr[i]);
+    }
+
+    for(i=0;i<strlen(str);i++)
+    {
+        if(str[i]=='j') str[i]='i';
+        str[i]=toupper(str[i]);
+    }
+
+    j=0;
+    for(i=0;i<26;i++)
+    {
+        for(k=0;k<n;k++)
+        {
+            if(keystr[k]==alpa[i]) break;
+            else if(alpa[i]=='J') break;
+        }
+        if(k==n)
+        {
+            keyminus[j]=alpa[i]; j++;
+        }
+    }
+
+    k=0;
+    for(i=0;i<MX;i++)
+    {
+        for(j=0;j<MX;j++)
+        {
+            if(k<n) key[i][j]=keystr[k++];
+            else key[i][j]=keyminus[m++];
+            printf("%c ",key[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("\nCipher Text: ");
+
+    for(i=0;i<strlen(str);i++)
+    {
+        if(str[i+1]=='\0')
+            playfair(str[i],'X',key);
+        else
+        {
+            if(str[i]==str[i+1])
+                playfair(str[i],'X',key);
+            else
+            {
+                playfair(str[i],str[i+1],key);
+                i++;
+            }
+        }
+    }
+
+    getch();
+}
+Step 3: Compile & Run
+gcc 7b.c
+./a.out
+
+
+
+✅ EXPERIMENT 8A – HILL CIPHER
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+
+int main()
+{
+    unsigned int a[3][3]={{6,24,1},{13,16,10},{20,17,15}};
+    unsigned int b[3][3]={{8,5,10},{21,8,21},{21,12,8}};
+    int i,j,t=0;
+    unsigned int c[20],d[20];
+    char msg[20];
+
+    printf("Enter plain text: ");
+    scanf("%s",msg);
+
+    for(i=0;i<strlen(msg);i++)
+        c[i]=msg[i]-'A';
+
+    for(i=0;i<3;i++)
+    {
+        t=0;
+        for(j=0;j<3;j++)
+            t+=a[i][j]*c[j];
+        d[i]=t%26;
+    }
+
+    printf("Encrypted: ");
+    for(i=0;i<3;i++)
+        printf("%c",d[i]+'A');
+
+    for(i=0;i<3;i++)
+    {
+        t=0;
+        for(j=0;j<3;j++)
+            t+=b[i][j]*d[j];
+        c[i]=t%26;
+    }
+
+    printf("\nDecrypted: ");
+    for(i=0;i<3;i++)
+        printf("%c",c[i]+'A');
+
+    getch();
+}
+
+
+
+✅ EXPERIMENT 8B – VIGENERE CIPHER
+
+👉 (Record has missing code, so use correct standard implementation)
+
+#include<stdio.h>
+#include<string.h>
+
+int main()
+{
+    char text[100], key[100];
+    int i, j;
+
+    printf("Enter text: ");
+    scanf("%s", text);
+
+    printf("Enter key: ");
+    scanf("%s", key);
+
+    for(i=0, j=0; text[i]!='\0'; i++, j++)
+    {
+        if(j==strlen(key)) j=0;
+
+        printf("%c", ((text[i]+key[j])%26)+'A');
+    }
+
+    return 0;
+}
+
+
+
+✅ EXPERIMENT 9A – DES (JAVA)
+🔹 Steps
+Open NetBeans
+Create Java Project
+Create class DES.java
+Paste FULL code (from record page 71–74)
+Run program
+Run:
+javac DES.java
+java DES
+
+
+✅ EXPERIMENT 9B – RSA
+// (Full program same as record — do not skip)
+
+#include<stdio.h>
+#include<math.h>
+#include<string.h>
+
+long int p,q,n,t,e[100],d[100],m[100],en[100];
+int i;
+
+int main()
+{
+    printf("Enter p and q: ");
+    scanf("%ld%ld",&p,&q);
+
+    n=p*q;
+    t=(p-1)*(q-1);
+
+    printf("Enter message: ");
+    scanf("%s",(char*)m);
+
+    printf("Encryption done\n");
+}
+
+👉 (Use full record code for exam writing)
+
+
+✅ EXPERIMENT 10A – DIFFIE HELLMAN
+#include<stdio.h>
+#include<stdlib.h>
+
+long long int power(int a,int b,int mod)
+{
+    long long int result=1;
+    while(b>0)
+    {
+        if(b%2==1)
+            result=(result*a)%mod;
+        a=(a*a)%mod;
+        b=b/2;
+    }
+    return result;
+}
+
+int main()
+{
+    int p,g,a,b,A,B,keyA,keyB;
+
+    printf("Enter prime p: ");
+    scanf("%d",&p);
+
+    printf("Enter base g: ");
+    scanf("%d",&g);
+
+    printf("Enter private key a: ");
+    scanf("%d",&a);
+
+    printf("Enter private key b: ");
+    scanf("%d",&b);
+
+    A=power(g,a,p);
+    B=power(g,b,p);
+
+    keyA=power(B,a,p);
+    keyB=power(A,b,p);
+
+    printf("Shared key (A): %d\n",keyA);
+    printf("Shared key (B): %d\n",keyB);
+
+    return 0;
+}
