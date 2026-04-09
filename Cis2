@@ -1,0 +1,72 @@
+10b mad5
+#include <stdio.h>
+#include <string.h>
+#include <openssl/md5.h>
+
+int main() {
+    char input[1000];
+    unsigned char digest[MD5_DIGEST_LENGTH];
+
+    printf("Enter the message: ");
+    scanf("%s", input);
+
+    // Generate MD5 hash
+    MD5((unsigned char*)input, strlen(input), digest);
+
+    // Print hash
+    printf("MD5 Hash: ");
+    for(int i = 0; i < MD5_DIGEST_LENGTH; i++) {
+        printf("%02x", digest[i]);
+    }
+
+    printf("\n");
+    return 0;
+}
+
+
+
+
+9a des
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import java.util.Base64;
+import java.util.Scanner;
+
+public class DESExample {
+
+    public static void main(String[] args) {
+        try {
+            // Take input from user
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Enter the message: ");
+            String message = sc.nextLine();
+
+            // Generate DES Key
+            KeyGenerator keyGen = KeyGenerator.getInstance("DES");
+            SecretKey secretKey = keyGen.generateKey();
+
+            // Create Cipher instance
+            Cipher cipher = Cipher.getInstance("DES");
+
+            // ENCRYPTION
+            cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+            byte[] encryptedBytes = cipher.doFinal(message.getBytes());
+
+            String encryptedText = Base64.getEncoder().encodeToString(encryptedBytes);
+            System.out.println("Encrypted Text: " + encryptedText);
+
+            // DECRYPTION
+            cipher.init(Cipher.DECRYPT_MODE, secretKey);
+            byte[] decryptedBytes = cipher.doFinal(encryptedBytes);
+
+            String decryptedText = new String(decryptedBytes);
+            System.out.println("Decrypted Text: " + decryptedText);
+
+            sc.close();
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
+    }
+}
